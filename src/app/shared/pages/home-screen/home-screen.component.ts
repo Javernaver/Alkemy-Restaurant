@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeScreenComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    localStorage.removeItem('token');
+  }
 
   ngOnInit(): void {
   }

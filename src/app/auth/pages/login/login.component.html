@@ -9,14 +9,17 @@
                             <h3 class="login-heading mb-4">¡Bienvenido!</h3>
 
                             <!-- Sign In Form -->
-                            <form>
+                            <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <input type="email" formControlName="email" [class]="isValid('email') ? 'form-control is-invalid': 'form-control'" id="floatingInput" placeholder="name@example.com">
                                     <label for="floatingInput">Correo electrónico</label>
+                                    <small *ngIf="isValid('email')" id="username2-help" class="p-error block">Correo electrónico inválido.</small>
+
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <input type="password" formControlName="password" [class]="isValid('password') ? 'form-control is-invalid': 'form-control'" id="floatingPassword" placeholder="Password">
                                     <label for="floatingPassword">Contraseña</label>
+                                    <small *ngIf="isValid('password')" id="username2-help" class="p-error block">Ingresa una contraseña.</small>
                                 </div>
 
 
