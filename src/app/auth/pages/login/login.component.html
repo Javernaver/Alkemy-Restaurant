@@ -25,8 +25,10 @@
 
 
                                 <div class="d-grid">
-                                    <button pButton type="submit" label="Ingresar"></button>
-
+                                    <button pButton [disabled]="loading" type="submit" label="Ingresar"></button>
+                                    <div class="text-center mt-5" *ngIf="this.loginForm.valid && loading">
+                                        <p-progressSpinner [style]="{width: '100px', height: '100px'}" strokeWidth="3"></p-progressSpinner>
+                                    </div>
                                 </div>
 
                             </form>

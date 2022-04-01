@@ -25,8 +25,9 @@ export class AuthService {
 
   login(user: User | Partial<User>) {
 
-    return this.http.post<any>(this.authUrl, user).pipe(
-      tap( res => this.token = res.token)
+    return this.http.post<any>(this.authUrl, user)
+    .pipe(
+      tap( res => this.token = res.token )
     );
   }
 
@@ -41,7 +42,7 @@ export class AuthService {
   }
 
   invalidAccess() {
-    this.alertService.alert('Acceso restringido','No tiene permiso para acceder a esta area, debe ser un usuario válido!', 'error');
+    this.alertService.alert('Acceso restringido','No tiene permiso para acceder a esta area. ¡Debes ser un usuario válido!', 'error');
     this.router.navigate(['/auth/login']);
   }
 
