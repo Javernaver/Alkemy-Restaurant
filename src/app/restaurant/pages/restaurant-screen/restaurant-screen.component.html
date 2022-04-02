@@ -1,2 +1,29 @@
-<p>restaurant-screen works!</p>
-{{results|json}}
+<app-navbar (onEnter)="search($event)" (onDebounce)="search($event)"></app-navbar>
+
+<ng-container *ngIf="!results; else Recipes">
+    <div class="wrapper">
+        <p-progressSpinner [style]="{width: '100px', height: '100px'}" strokeWidth="3"></p-progressSpinner>
+
+    </div>
+
+
+</ng-container>
+
+<ng-template #Recipes>
+    <div class="recipes">
+
+        <h1>Recetas</h1>
+        <hr>
+        <div *ngIf="results!.length == 0 && term.length > 0" class="alert alert-danger mt-3 animate__animated animate__fadeInDown">
+            No se encontraron recetas: {{term}}
+        </div>
+        <app-recipe-card-list [recipes]="results!"></app-recipe-card-list>
+
+    </div>
+
+
+
+
+
+
+</ng-template>

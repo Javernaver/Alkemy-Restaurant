@@ -1,4 +1,5 @@
 import { ButtonModule } from 'primeng/button';
+import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
 import { NgModule } from '@angular/core';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
@@ -7,7 +8,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
   exports: [
     ButtonModule,
     InputTextModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    CardModule,
   ]
 })
 export class PrimeNgModule { }

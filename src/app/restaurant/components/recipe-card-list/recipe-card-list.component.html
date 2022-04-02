@@ -1,1 +1,7 @@
-<p>recipe-card-list works!</p>
+<div class="mt-10 animate__animated animate__fadeIn" fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="25px">
+
+    <div fxFlex="20" fxFlex.lg="20" fxFlex.sm="50" fxFlex.md="30" *ngFor="let recipe of recipes">
+        <app-recipe-card [recipe]="recipe"></app-recipe-card>
+    </div>
+
+</div>

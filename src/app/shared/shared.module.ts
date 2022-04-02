@@ -6,15 +6,18 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    HomeScreenComponent
+    HomeScreenComponent,
+
   ],
   imports: [
     CommonModule,
     PrimeNgModule,
-    RouterModule
+    RouterModule,
+    
   ],
   exports: [
-    HomeScreenComponent
+    HomeScreenComponent,
+
   ]
 })
 export class SharedModule { }

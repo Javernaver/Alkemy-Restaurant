@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '../core/utils/material/material.module';
 import { MenuComponent } from './components/menu/menu.component';
+import { MenuScreenComponent } from './pages/menu-screen/menu-screen.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { PrimeNgModule } from '../core/utils/prime-ng/prime-ng.module';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
@@ -10,6 +12,7 @@ import { RecipeViewScreenComponent } from './pages/recipe-view-screen/recipe-vie
 import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { RestaurantScreenComponent } from './pages/restaurant-screen/restaurant-screen.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,14 +21,17 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     RecipeCardComponent,
     RecipeCardListComponent,
     RecipeViewScreenComponent,
-    SearchInputComponent
+    NavbarComponent,
+    SearchInputComponent,
+    MenuScreenComponent
   ],
   imports: [
     CommonModule,
     PrimeNgModule,
-    MaterialModule,
     RestaurantRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
+    FlexLayoutModule
   ]
 })
 export class RestaurantModule { }

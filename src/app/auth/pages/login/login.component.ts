@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
    }
    
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
   }
 
 
@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
 
-
     try {
 
       let user: User = {
@@ -68,7 +67,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token);
 
         this.loading = false;
-        this.router.navigate(['/restaurant']);
+        this.router.navigate(['/restaurant']);  
+
         },
         error: error => {
           //console.log(error);

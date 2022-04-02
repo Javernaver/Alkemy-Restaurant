@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Recipe } from '../../models/recipe.model';
-import { RecipesProviderService } from '../../providers/recipes-provider.service';
+import { RecipesProviderService } from '../../services/providers/recipes-provider.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,9 +11,11 @@ import { Router } from '@angular/router';
 })
 export class RestaurantScreenComponent implements OnInit {
 
-  results: Partial<Recipe[]> = [];
+  results!: Recipe[] | undefined;
 
   recipe: Recipe | undefined;
+
+  term: string = '';
 
   constructor(
     private recipesP: RecipesProviderService,
@@ -40,4 +42,11 @@ export class RestaurantScreenComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  search(keyword: string) {
+    this.term = keyword;
+    console.log(keyword);
+
+    this.recipesP.searchRecipe(keyword).subscribe( data => this.results = data);
+  }
 }

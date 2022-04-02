@@ -1,1 +1,10 @@
-<p>recipe-card works!</p>
+<p-card header="{{recipe!.title}}" subheader="Card Subheader" [style]="{width: '360px'}" styleClass="p-card-shadow mt-2 mb-2">
+    <ng-template pTemplate="header">
+        <img alt="Card" src="{{recipe!.image}}">
+    </ng-template>
+    <p><strong>Price:</strong> ${{recipe!.pricePerServing}}</p>
+    <ng-template pTemplate="footer">
+        <p-button label="Save" icon="pi pi-check"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+    </ng-template>
+</p-card>

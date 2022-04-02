@@ -7,7 +7,9 @@ import { Injectable } from '@angular/core';
 })
 export class AlertService {
 
-  constructor() { }
+  constructor(
+  ) { }
+  
 
   // dispara el popup de aviso recibiendo el titulo, el cuerpo y el icono
   public alert(title: string, body: string, icon: SweetAlertIcon ) {
@@ -37,4 +39,15 @@ export class AlertService {
             })
 
   }
+
+  public successAdd(){
+    return Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Agregado correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+  }
+  
 }
