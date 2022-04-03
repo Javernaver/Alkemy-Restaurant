@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AlertService } from '../../../core/services/alert/alert.service';
 import { Recipe } from '../../models/recipe.model';
 import { RecipesProviderService } from '../../services/providers/recipes-provider.service';
 import { Router } from '@angular/router';
@@ -19,7 +20,8 @@ export class RestaurantScreenComponent implements OnInit {
 
   constructor(
     private recipesP: RecipesProviderService,
-    private router: Router
+    private router: Router,
+    private alerts: AlertService
   ) { 
     this.recipesP.searchRecipe('pasta').subscribe( data => this.results = data);
      
@@ -48,5 +50,10 @@ export class RestaurantScreenComponent implements OnInit {
     console.log(keyword);
 
     this.recipesP.searchRecipe(keyword).subscribe( data => this.results = data);
+  }
+
+  alertItemAdded(){
+    console.log('item added');
+    this.alerts.successAdd();
   }
 }
