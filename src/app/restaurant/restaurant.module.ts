@@ -13,6 +13,7 @@ import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { RestaurantScreenComponent } from './pages/restaurant-screen/restaurant-screen.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { SharedModule } from '../shared/shared.module';
+import { VegetarianPipe } from './pipes/vegetarian.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SharedModule } from '../shared/shared.module';
     RecipeViewScreenComponent,
     NavbarComponent,
     SearchInputComponent,
-    MenuScreenComponent
+    MenuScreenComponent,
+    VegetarianPipe
   ],
   imports: [
     CommonModule,

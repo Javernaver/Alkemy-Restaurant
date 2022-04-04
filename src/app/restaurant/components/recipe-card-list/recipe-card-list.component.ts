@@ -13,16 +13,10 @@ export class RecipeCardListComponent implements OnInit {
   recipes!: Recipe[];
 
 
-  @Output() 
-  itemAdded: EventEmitter<boolean> = new EventEmitter();
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  emitItemAdded(){
-    this.itemAdded.emit(true);
-  }
-
+  
 }

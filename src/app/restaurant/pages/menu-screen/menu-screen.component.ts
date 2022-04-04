@@ -19,16 +19,23 @@ export class MenuScreenComponent implements OnInit {
   ) {
     this.menuService.getMenuItems().subscribe(res=>{
       this.menuItems = res;
-      console.log(this.menuItems);
+      this.total = this.menuService.getTotalPrice();
+      //console.log(this.menuItems);
     })
+
+
    }
 
   ngOnInit(): void {
     
   }
-  removeItem(item: number){
-    this.menuService.removeMenuItem(item);
+
+  removeItem(itemIndex: number){
+    this.menuService.removeMenuItem(itemIndex);
+    this.total = this.menuService.getTotalPrice();
   }
+
+
   emptyMenu(){
     this.menuService.removeAllMenu();
   }

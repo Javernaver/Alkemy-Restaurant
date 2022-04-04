@@ -21,6 +21,8 @@ export class NavbarComponent implements OnInit {
 
   term: string = '';
 
+  location: string = '';
+
   ngOnInit(): void {
 
     // cada 500ms despues de escribir emite el valor del input
@@ -31,7 +33,8 @@ export class NavbarComponent implements OnInit {
       .subscribe( value => {
         this.onDebounce.emit( value );
       });
-
+      this.location = window.location.pathname;
+      
   }
 
   search(keyword: string) {
@@ -44,5 +47,6 @@ export class NavbarComponent implements OnInit {
     this.term = keyword;
     // al presionar un tecla activa el debouce
     this.debouncer.next( keyword );
+    
   }
 }

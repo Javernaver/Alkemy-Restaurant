@@ -16,14 +16,16 @@ export class RestaurantScreenComponent implements OnInit {
 
   recipe: Recipe | undefined;
 
-  term: string = '';
+  term: string = 'pasta';
+
+  msgs: any[] = [];
 
   constructor(
     private recipesP: RecipesProviderService,
     private router: Router,
     private alerts: AlertService
   ) { 
-    this.recipesP.searchRecipe('pasta').subscribe( data => this.results = data);
+    this.recipesP.searchRecipe(this.term).subscribe( data => this.results = data);
      
 
     /* this.recipesP.getRecipe('saddsadsa').subscribe(
@@ -52,8 +54,5 @@ export class RestaurantScreenComponent implements OnInit {
     this.recipesP.searchRecipe(keyword).subscribe( data => this.results = data);
   }
 
-  alertItemAdded(){
-    console.log('item added');
-    this.alerts.successAdd();
-  }
+ 
 }

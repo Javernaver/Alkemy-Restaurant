@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <ng-container *ngIf="!menuItems; else Menu">
     <div class="wrapper">
         <p-progressSpinner [style]="{width: '100px', height: '100px'}" strokeWidth="3"></p-progressSpinner>
@@ -8,49 +10,104 @@
 </ng-container>
 
 <ng-template #Menu>
-    <ng-container *ngIf="menuItems!.length !=0">
-        <div class="container">
-            <div class="card-table">
-                <div class="cart-product">
-                    <table class="table table-responsive">
-                        <thead>
+    <div class="mt-4 mb-3 animate__animated animate__zoomIn">
+
+
+        <ng-container *ngIf="menuItems!.length !=0">
+            <!-- <div class="container mt-8 ">
+                <div class="card-table">
+                    <div class="cart-product">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Recipe</th>
+                                    <th>Image</th>
+                                    <th>Ready In:</th>
+                                    <th>Vegetarian </th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let recipe of menuItems; let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{recipe.title}}</td>
+                                    <td><img style="width: 120px;" src="{{recipe.image}}" alt=""></td>
+                                    <th style="width: 12%;">{{recipe.readyInMinutes}} minutes</th>
+                                    <td style="width: 12%;">{{recipe.vegetarian | vegetarian}}</td>
+                                    <th style="width: 12%;">${{recipe.pricePerServing}}</th>
+                                    <td style="width: 12%;">{{recipe.quantity}}</td>
+                                    <td style="width: 12%;">${{recipe.pricePerServing * recipe.quantity}}</td>
+                                    <td>
+                                        <button (click)="removeItem(i)" class="btn btn-danger"><i class="pi pi-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"></td>
+                                    <td style="width: 25%;"><button (click)="emptyMenu()" class="btn btn-danger">Vaciar Menú</button></td>
+                                    <td style="width: 25%;"><button routerLink="/restaurant" class="btn btn-primary">Agregar nuevos platos</button></td>
+                                    <td style="width: 25%;"><button class="btn btn-success">Order</button></td>
+                                    <td style="width: 25%;"><strong>Grand Total : ${{total}}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> -->
+            <div class="mt-4 ml-4 mr-4 mb-4">
+
+
+                <p-card class="p-mt-3 p-ml-4 p-mr-4 p-mb-4">
+                    <p-table [value]="menuItems!" responsiveLayout="scroll" class="mt-10">
+                        <ng-template pTemplate="header">
                             <tr>
-                                <th>Sr.No</th>
-                                <th>Product Name</th>
-                                <th>Product Image</th>
-                                <th>Description</th>
+                                <th>N°</th>
+                                <th>Recipe</th>
+                                <th>Image</th>
+                                <th>Ready In:</th>
+                                <th>Vegetarian </th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
                                 <th>Action</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let recipe of menuItems; let i = index">
-                                <td>{{i+1}}</td>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-recipe let-rowIndex="rowIndex">
+                            <tr>
+                                <td>{{rowIndex+1}}</td>
                                 <td>{{recipe.title}}</td>
                                 <td><img style="width: 120px;" src="{{recipe.image}}" alt=""></td>
-                                <td style="width: 25%;">{{recipe.vegetarian}}</td>
-                                <th style="width: 12%;">{{recipe.pricePerServing}}</th>
-                                <td style="width: 12%;">{{recipe.healthScore}}</td>
-                                <td style="width: 12%;">{{recipe.pricePerServing}}</td>
+                                <td>{{recipe.readyInMinutes}} minutes</td>
+                                <td>{{recipe.vegetarian | vegetarian}}</td>
+                                <td>${{recipe.pricePerServing}}</td>
+                                <td>{{recipe.quantity}}</td>
+                                <td>${{recipe.pricePerServing * recipe.quantity}}</td>
                                 <td>
-                                    <button (click)="removeItem(i)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                    <button (click)="removeItem(rowIndex)" class="btn btn-danger"><i class="pi pi-trash"></i></button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="4"></td>
-                                <td><button (click)="emptyMenu()" class="btn btn-danger">Empty Cart</button></td>
-                                <td><button routerLink="/restaurant" class="btn btn-primary">Shop More</button></td>
-                                <td><button class="btn btn-success">Checkout</button></td>
-                                <td><strong>Grand Total : ${{total}}</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
+                        </ng-template>
+
+                    </p-table>
+                    <div class="mt-2">
+                        <tr class="p-mt-2">
+
+                            <th style="width: 20%;"><button (click)="emptyMenu()" class="btn btn-danger">Vaciar Menú</button></th>
+                            <th style="width: 30%;"><button routerLink="/restaurant" class="btn btn-primary">Agregar nuevos platos</button></th>
+                            <th style="width: 30%;"><button class="btn btn-success">Order</button></th>
+                            <th style="width: 20%;"><strong>Grand Total : ${{total}}</strong></th>
+
+                        </tr>
+                    </div>
+
+                </p-card>
             </div>
-        </div>
-    </ng-container>
+        </ng-container>
+    </div>
 
 
     <ng-container *ngIf="menuItems!.length ==0">

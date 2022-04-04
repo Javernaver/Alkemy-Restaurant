@@ -1,3 +1,4 @@
+import { AlertService } from '../../core/services/alert/alert.service';
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 import { of } from 'rxjs';
@@ -10,10 +11,25 @@ export class MenuService {
 
   menuItems: Recipe[] = [];
 
+  constructor(
+    private alerts: AlertService
+  ) { }
+
   addtoMenu(item: Recipe) {
-    this.menuItems.push(item);
-    console.log(this.menuItems);
-    localStorage.setItem('menuItems', JSON.stringify(this.menuItems));
+
+    let index = this.menuItems.indexOf(item);
+
+    if (index === -1) {
+      item.quantity = 1;
+      this.menuItems.push(item);
+      console.log(this.menuItems);
+      localStorage.setItem('menuItems', JSON.stringify(this.menuItems));
+    }
+    else {
+      this.menuItems[index].quantity++;
+      localStorage.setItem('menuItems', JSON.stringify(this.menuItems));
+    }
+    this.alerts.successAdd();
   }
 
   removeAllMenu() {
@@ -28,13 +44,14 @@ export class MenuService {
     
   }
   getTotalPrice(): number {
-    throw new Error('Method not implemented.');
+    return this.menuItems.reduce((acc, curr) => acc + (curr.pricePerServing * curr.quantity), 0);
   }
+  
   getMenuItems() {
 
     this.menuItems = localStorage.getItem('menuItems') ? JSON.parse(localStorage.getItem('menuItems') || '{}') : [];
     return of(this.menuItems);
   }
 
-  constructor() { }
+  
 }

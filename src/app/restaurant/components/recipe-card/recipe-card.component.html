@@ -2,9 +2,11 @@
     <ng-template pTemplate="header">
         <img alt="Card" src="{{recipe!.image}}">
     </ng-template>
-    <p><strong>Price:</strong> ${{recipe!.pricePerServing}}</p>
+    <p><strong>Vegetariano:</strong> {{recipe!.vegetarian | vegetarian}}</p>
+    <p><strong>Tiempo de preparación: </strong>{{recipe!.readyInMinutes}} minutos</p>
+    <p><strong>Precio:</strong> ${{recipe!.pricePerServing}}</p>
     <ng-template pTemplate="footer">
         <p-button label="Agregar al menú" class="mr-3" icon="pi pi-check" (click)="addtoMenu()"></p-button>
-        <button [routerLink]="['recipe', recipe!.id]" pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success"></button>
+        <button [routerLink]="['recipe', recipe!.id]" pButton pRipple type="button" icon="pi pi-eye" class=" p-button-rounded p-button-success"></button>
     </ng-template>
 </p-card>

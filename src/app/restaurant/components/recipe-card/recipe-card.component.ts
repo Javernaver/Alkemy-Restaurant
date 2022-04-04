@@ -13,8 +13,7 @@ export class RecipeCardComponent implements OnInit {
   @Input() 
   recipe!: Recipe | undefined;
 
-  @Output() 
-  itemAdded: EventEmitter<boolean> = new EventEmitter();
+  
 
   constructor(
     private menuService: MenuService
@@ -24,7 +23,7 @@ export class RecipeCardComponent implements OnInit {
   }
 
   addtoMenu() {
-    this.itemAdded.emit(true);
+    
     
     this.menuService.addtoMenu(this.recipe!);
   }

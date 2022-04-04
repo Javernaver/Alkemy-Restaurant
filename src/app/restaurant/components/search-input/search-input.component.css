@@ -1,0 +1,8 @@
+.input-search {
+    width: 550px;
+    height: 40px;
+    max-width: auto;
+    max-height: auto;
+    display: flex;
+    outline: none;
+}

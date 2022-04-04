@@ -1,1 +1,43 @@
-<p>recipe-view-screen works!</p>
+<app-navbar></app-navbar>
+<ng-container *ngIf="!recipe; else Recipe">
+    <div class="wrapper">
+        <p-progressSpinner [style]="{width: '100px', height: '100px'}" strokeWidth="3"></p-progressSpinner>
+
+    </div>
+
+
+</ng-container>
+<ng-template #Recipe>
+
+    <main class="container mt-6" id="product">
+
+        <!-- Left Column / Image -->
+        <div class="left-column mt-6">
+            <img src="{{recipe.image}}" alt="{{recipe.title}}" />
+        </div>
+
+
+        <!-- Right Column -->
+        <div class="right-column">
+
+            <!-- Product Description -->
+            <div class="product-description">
+                <span>{{recipe.title}}</span>
+
+                <h1>{{recipe.title}}</h1>
+                <span>HealthScore: {{recipe.healthScore}}</span>
+                <p [innerHTML]="summary"></p>
+
+            </div>
+
+
+            <div class="product-price">
+
+                <span>${{recipe.pricePerServing}}</span>
+                <button pButton type="button" (click)="addToMenu()" label="Add to Order"></button>
+
+            </div>
+        </div>
+    </main>
+
+</ng-template>

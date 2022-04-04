@@ -35,7 +35,8 @@ export interface Recipe {
     dishTypes:                string[];
     extendedIngredients:      ExtendedIngredient[];
     summary:                  string;
-    winePairing:              WinePairing;
+    winePairing?:              WinePairing;
+    quantity:                 number;
 }
 
 export interface ExtendedIngredient {
