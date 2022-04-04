@@ -13,7 +13,6 @@ export class RecipeCardComponent implements OnInit {
   @Input() 
   recipe!: Recipe | undefined;
 
-  
 
   constructor(
     private menuService: MenuService

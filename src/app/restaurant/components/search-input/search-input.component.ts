@@ -37,7 +37,7 @@ export class SearchInputComponent implements OnInit {
   search() {
     // al presionar enter emite el valor
     this.onEnter.emit( this.term );
-    console.log(this.term);
+
   }
 
   keyPressed() {
