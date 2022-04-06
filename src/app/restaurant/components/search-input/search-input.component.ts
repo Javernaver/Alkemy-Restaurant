@@ -15,7 +15,7 @@ export class SearchInputComponent implements OnInit {
   onDebounce: EventEmitter<string> = new EventEmitter();
 
   @Input()
-  placeholder: string = 'Buscar...';
+  placeholder: string = 'Search a recipe...';
 
   debouncer: Subject<string> = new Subject();
 

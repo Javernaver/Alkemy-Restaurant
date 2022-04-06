@@ -13,13 +13,13 @@
 
     <div class="recipes">
 
-        <h1>Recetas</h1>
+        <h1>Recipes</h1>
         <hr>
 
 
         <p-messages [(value)]="msgs"></p-messages>
         <div *ngIf="results!.length == 0 && term.length > 0" class="alert alert-danger mt-3 animate__animated animate__fadeInDown">
-            No se encontraron recetas: {{term}}
+            No recipes found: {{term}}
         </div>
 
         <app-recipe-card-list [recipes]="results!"></app-recipe-card-list>

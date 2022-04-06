@@ -14,12 +14,15 @@ export class MenuScreenComponent implements OnInit {
 
   total !: number;
 
+  invalid: boolean = false;
+
   constructor(
     private menuService: MenuService
   ) {
     this.menuService.getMenuItems().subscribe(res=>{
       this.menuItems = res;
       this.total = this.menuService.getTotalPrice();
+      this.invalid = this.menuService.checkMenu();
       //console.log(this.menuItems);
     })
 
@@ -33,11 +36,31 @@ export class MenuScreenComponent implements OnInit {
   removeItem(itemIndex: number){
     this.menuService.removeMenuItem(itemIndex);
     this.total = this.menuService.getTotalPrice();
+    this.invalid = this.menuService.checkMenu();
   }
 
 
   emptyMenu(){
     this.menuService.removeAllMenu();
+    this.invalid = this.menuService.checkMenu();
+  }
+
+  checkMenu ( ): boolean {
+    return this.menuService.checkMenu();
+  }
+
+  addOne(index: number){
+    this.menuItems![index].quantity++;
+    this.total = this.menuService.getTotalPrice();
+    this.invalid = this.menuService.checkMenu();
+  }
+
+  minusOne(index: number){
+    if (this.menuItems![index].quantity > 1){
+      this.menuItems![index].quantity--;
+      this.total = this.menuService.getTotalPrice();
+      this.invalid = this.menuService.checkMenu();
+    }
   }
 
 }

@@ -8,9 +8,9 @@ export class VegetarianPipe implements PipeTransform {
   transform(vegetarian: boolean): string {
 
     if (vegetarian){
-      return 'Es Vegetariano';
+      return 'Its a vegetarian dish';
     }
-    return 'No es Vegetariano';
+    return 'Its not a vegetarian dish';
 
   }
 

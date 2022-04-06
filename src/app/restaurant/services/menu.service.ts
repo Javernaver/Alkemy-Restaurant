@@ -22,7 +22,7 @@ export class MenuService {
     if (index === -1) {
       item.quantity = 1;
       this.menuItems.push(item);
-      console.log(this.menuItems);
+      //console.log(this.menuItems);
       localStorage.setItem('menuItems', JSON.stringify(this.menuItems));
     }
     else {
@@ -36,6 +36,7 @@ export class MenuService {
     this.menuItems.splice(0, this.menuItems.length);
     localStorage.removeItem('menuItems');
   }
+
   removeMenuItem(item: number) {
     
     this.menuItems.splice(item, 1);
@@ -43,6 +44,7 @@ export class MenuService {
     localStorage.setItem('menuItems', JSON.stringify(this.menuItems));
     
   }
+  
   getTotalPrice(): number {
     return this.menuItems.reduce((acc, curr) => acc + (curr.pricePerServing * curr.quantity), 0);
   }
@@ -53,5 +55,25 @@ export class MenuService {
     return of(this.menuItems);
   }
 
+  checkMenu( ): boolean {
+    let contVegetarian = 0;
+    let contNormal = 0;
+
+    this.menuItems.forEach(element => {
+      if (element.vegetarian) {
+        contVegetarian += 1 * element.quantity;
+      }
+      else {
+        contNormal += 1 * element.quantity;
+      }
+    });
+    
+    if (contVegetarian >= 2 && contNormal >= 2) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
   
 }
